@@ -1,0 +1,21 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
+  workflow_dispatch: # Allows you to manually trigger the sync via the UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+
+      - name: Sync Upstream
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
+        with:
+          target_sync_branch: main        # The branch in your fork you want to update
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }} # Built-in token, no setup needed
+          upstream_sync_repo: owner/repo  # Change to the ORIGINAL upstream repository path
+          upstream_sync_branch: main      # The branch in the upstream repo you are tracking

@@ -17,5 +17,5 @@ jobs:
         with:
           target_sync_branch: main        # The branch in your fork you want to update
           target_repo_token: ${{ secrets.GITHUB_TOKEN }} # Built-in token, no setup needed
-          upstream_sync_repo: owner/repo  # Change to the ORIGINAL upstream repository path
+          upstream_sync_repo: cashorcardsir/umami  # Change to the ORIGINAL upstream repository path
           upstream_sync_branch: main      # The branch in the upstream repo you are tracking
